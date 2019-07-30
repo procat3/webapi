@@ -1,0 +1,819 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Procat3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Appointment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientId" Type="Int32" Nullable="false" />
+    <Property Name="AppointmentDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="luStatu" Relationship="Self.FK_Appointment_luStatus" FromRole="Appointment" ToRole="luStatus" />
+    <NavigationProperty Name="PersonalDetail" Relationship="Self.FK_Appointment_PatientID" FromRole="Appointment" ToRole="PersonalDetails" />
+  </EntityType>
+  <EntityType Name="luDocumentType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DocumentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="luStatu" Relationship="Self.FK_luDocumentType_luStatus" FromRole="luDocumentType" ToRole="luStatus" />
+  </EntityType>
+  <EntityType Name="luGender">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PersonalDetails" Relationship="Self.FK_PersonalDetails_luGender" FromRole="luGender" ToRole="PersonalDetails" />
+  </EntityType>
+  <EntityType Name="luMaritalStatu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaritalStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PersonalDetails" Relationship="Self.FK_PersonalDetails_luMaritalStatus" FromRole="luMaritalStatus" ToRole="PersonalDetails" />
+  </EntityType>
+  <EntityType Name="luMedicalAid">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MedicalAidName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TelephoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPerson" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="luStatu" Relationship="Self.FK_luMedicalAid_luStatus" FromRole="luMedicalAid" ToRole="luStatus" />
+    <NavigationProperty Name="PersonalDetails" Relationship="Self.FK_PersonalDetails_luMedicalAid" FromRole="luMedicalAid" ToRole="PersonalDetails" />
+  </EntityType>
+  <EntityType Name="luStatu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Appointments" Relationship="Self.FK_Appointment_luStatus" FromRole="luStatus" ToRole="Appointment" />
+    <NavigationProperty Name="luDocumentTypes" Relationship="Self.FK_luDocumentType_luStatus" FromRole="luStatus" ToRole="luDocumentType" />
+    <NavigationProperty Name="luMedicalAids" Relationship="Self.FK_luMedicalAid_luStatus" FromRole="luStatus" ToRole="luMedicalAid" />
+    <NavigationProperty Name="luHomeEnvironments" Relationship="Self.FK_luHomeEnvironment_luStatus" FromRole="luStatus" ToRole="luHomeEnvironment" />
+    <NavigationProperty Name="luMobilityGrades" Relationship="Self.FK_luMobilityGrade_luStatus" FromRole="luStatus" ToRole="luMobilityGrade" />
+    <NavigationProperty Name="luProsthesisDailyDurations" Relationship="Self.FK_luProsthesisDailyDuration_luStatus" FromRole="luStatus" ToRole="luProsthesisDailyDuration" />
+    <NavigationProperty Name="luProsthesisFrequencies" Relationship="Self.FK_luProsthesisFrequency_luStatus" FromRole="luStatus" ToRole="luProsthesisFrequency" />
+    <NavigationProperty Name="luQueues" Relationship="Self.FK_luQueue_luStatus" FromRole="luStatus" ToRole="luQueue" />
+    <NavigationProperty Name="luTransports" Relationship="Self.FK_luTransport_luStatus" FromRole="luStatus" ToRole="luTransport" />
+    <NavigationProperty Name="luWeights" Relationship="Self.FK_luWeight_luStatus" FromRole="luStatus" ToRole="luWeight" />
+    <NavigationProperty Name="luWorkEnvironments" Relationship="Self.FK_luWorkEnvironment_luStatus" FromRole="luStatus" ToRole="luWorkEnvironment" />
+    <NavigationProperty Name="NextOfKins" Relationship="Self.FK_NextOfKin_luStatus" FromRole="luStatus" ToRole="NextOfKin" />
+    <NavigationProperty Name="Notes" Relationship="Self.FK_Note_luStatus" FromRole="luStatus" ToRole="Note" />
+    <NavigationProperty Name="Notifications" Relationship="Self.FK_Notification_luStatus" FromRole="luStatus" ToRole="Notification" />
+    <NavigationProperty Name="PersonalDetails" Relationship="Self.FK_PersonalDetails_luStatus" FromRole="luStatus" ToRole="PersonalDetails" />
+    <NavigationProperty Name="PracticeDetails" Relationship="Self.FK_PracticeDetails_luStatus" FromRole="luStatus" ToRole="PracticeDetails" />
+    <NavigationProperty Name="luRoles" Relationship="Self.FK_Role_luStatus" FromRole="luStatus" ToRole="luRole" />
+    <NavigationProperty Name="Documents" Relationship="Self.FK_Status" FromRole="luStatus" ToRole="Document" />
+    <NavigationProperty Name="User1" Relationship="Self.FK_User_luStatus" FromRole="luStatus" ToRole="User1" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Document">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientId" Type="Int32" />
+    <Property Name="DocumentTypeId" Type="Int32" />
+    <Property Name="ImageDate" Type="DateTime" Precision="3" />
+    <Property Name="DateUploaded" Type="DateTime" Precision="3" />
+    <Property Name="UploadedBy" Type="Int32" />
+    <Property Name="StatusId" Type="Int32" />
+    <NavigationProperty Name="luStatu" Relationship="Self.FK_Status" FromRole="Document" ToRole="luStatus" />
+    <NavigationProperty Name="PersonalDetail" Relationship="Self.FK_dbo_Document_dbo_Patient_ID" FromRole="Document" ToRole="PersonalDetails" />
+    <NavigationProperty Name="User1" Relationship="Self.FK_dbo_Document_dbo_User_ID" FromRole="Document" ToRole="User1" />
+  </EntityType>
+  <EntityType Name="NextOfKin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Relationship" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EmailAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WorkTelNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HomeTelNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLine1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLine2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLine3" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <Property Name="PatientId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="luStatu" Relationship="Self.FK_NextOfKin_luStatus" FromRole="NextOfKin" ToRole="luStatus" />
+    <NavigationProperty Name="PersonalDetail" Relationship="Self.FK_PatientDetails" FromRole="NextOfKin" ToRole="PersonalDetails" />
+  </EntityType>
+  <EntityType Name="Note">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientId" Type="Int32" Nullable="false" />
+    <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="luStatu" Relationship="Self.FK_Note_luStatus" FromRole="Note" ToRole="luStatus" />
+  </EntityType>
+  <EntityType Name="Notification">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientId" Type="Int32" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MobileNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="luStatu" Relationship="Self.FK_Notification_luStatus" FromRole="Notification" ToRole="luStatus" />
+    <NavigationProperty Name="PersonalDetail" Relationship="Self.FK_Notification_PatientID" FromRole="Notification" ToRole="PersonalDetails" />
+  </EntityType>
+  <EntityType Name="PersonalDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EmailAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WorkTelNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HomeTelNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Employer" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="EmployerContactPerson" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="EmployerTelNumber" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="EmployerEmailAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="NumberofDependants" Type="Int32" />
+    <Property Name="Photo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MedicalAidId" Type="Int32" />
+    <Property Name="PatientTypeId" Type="Int32" />
+    <Property Name="MaritalStatusId" Type="Int32" />
+    <Property Name="GenderId" Type="Int32" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Appointments" Relationship="Self.FK_Appointment_PatientID" FromRole="PersonalDetails" ToRole="Appointment" />
+    <NavigationProperty Name="luGender" Relationship="Self.FK_PersonalDetails_luGender" FromRole="PersonalDetails" ToRole="luGender" />
+    <NavigationProperty Name="luMaritalStatu" Relationship="Self.FK_PersonalDetails_luMaritalStatus" FromRole="PersonalDetails" ToRole="luMaritalStatus" />
+    <NavigationProperty Name="luMedicalAid" Relationship="Self.FK_PersonalDetails_luMedicalAid" FromRole="PersonalDetails" ToRole="luMedicalAid" />
+    <NavigationProperty Name="luStatu" Relationship="Self.FK_PersonalDetails_luStatus" FromRole="PersonalDetails" ToRole="luStatus" />
+    <NavigationProperty Name="Documents" Relationship="Self.FK_dbo_Document_dbo_Patient_ID" FromRole="PersonalDetails" ToRole="Document" />
+    <NavigationProperty Name="NextOfKins" Relationship="Self.FK_PatientDetails" FromRole="PersonalDetails" ToRole="NextOfKin" />
+    <NavigationProperty Name="Notifications" Relationship="Self.FK_Notification_PatientID" FromRole="PersonalDetails" ToRole="Notification" />
+  </EntityType>
+  <EntityType Name="PracticeDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PracticeName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PracticeNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PracticeDescription" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FaxNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TelephoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="VATRegistrationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="luStatu" Relationship="Self.FK_PracticeDetails_luStatus" FromRole="PracticeDetails" ToRole="luStatus" />
+    <NavigationProperty Name="User1" Relationship="Self.FK_Practice_luPractice" FromRole="PracticeDetails" ToRole="User1" />
+  </EntityType>
+  <EntityType Name="prac_practice">
+    <Key>
+      <PropertyRef Name="PracticeNumber" />
+    </Key>
+    <Property Name="PracticeNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PracDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PracAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PracOfficeNum" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PracEmailAddress" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="prc_PracticeUser">
+    <Key>
+      <PropertyRef Name="PracticeNumber" />
+      <PropertyRef Name="IDNumber" />
+    </Key>
+    <Property Name="PracticeNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IDNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PracStatus" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsValidEmail" Type="Boolean" Nullable="false" />
+    <Property Name="PracticeNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CellphonNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="luHomeEnvironment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HomeEnvironment" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="luStatu" Relationship="Self.FK_luHomeEnvironment_luStatus" FromRole="luHomeEnvironment" ToRole="luStatus" />
+  </EntityType>
+  <EntityType Name="luMobilityGrade">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MobilityGrade" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="luStatu" Relationship="Self.FK_luMobilityGrade_luStatus" FromRole="luMobilityGrade" ToRole="luStatus" />
+  </EntityType>
+  <EntityType Name="luProsthesisDailyDuration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="luStatu" Relationship="Self.FK_luProsthesisDailyDuration_luStatus" FromRole="luProsthesisDailyDuration" ToRole="luStatus" />
+  </EntityType>
+  <EntityType Name="luProsthesisFrequency">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="luStatu" Relationship="Self.FK_luProsthesisFrequency_luStatus" FromRole="luProsthesisFrequency" ToRole="luStatus" />
+  </EntityType>
+  <EntityType Name="luQueue">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QueueDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="luStatu" Relationship="Self.FK_luQueue_luStatus" FromRole="luQueue" ToRole="luStatus" />
+  </EntityType>
+  <EntityType Name="luTransport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Transport" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="luStatu" Relationship="Self.FK_luTransport_luStatus" FromRole="luTransport" ToRole="luStatus" />
+  </EntityType>
+  <EntityType Name="luWeight">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WeightCategory" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="luStatu" Relationship="Self.FK_luWeight_luStatus" FromRole="luWeight" ToRole="luStatus" />
+  </EntityType>
+  <EntityType Name="luWorkEnvironment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="luStatu" Relationship="Self.FK_luWorkEnvironment_luStatus" FromRole="luWorkEnvironment" ToRole="luStatus" />
+  </EntityType>
+  <EntityType Name="luRole">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Role" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="luStatu" Relationship="Self.FK_Role_luStatus" FromRole="luRole" ToRole="luStatus" />
+  </EntityType>
+  <EntityType Name="User1">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PracticeNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="luStatu" Relationship="Self.FK_User_luStatus" FromRole="User1" ToRole="luStatus" />
+    <NavigationProperty Name="Documents" Relationship="Self.FK_dbo_Document_dbo_User_ID" FromRole="User1" ToRole="Document" />
+    <NavigationProperty Name="PracticeDetail" Relationship="Self.FK_Practice_luPractice" FromRole="User1" ToRole="PracticeDetails" />
+  </EntityType>
+  <EntityType Name="luDocumentType1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DocumentDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="StatusId" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_Appointment_luStatus">
+    <End Role="luStatus" Type="Self.luStatu" Multiplicity="1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="luStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appointment_PatientID">
+    <End Role="PersonalDetails" Type="Self.PersonalDetail" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonalDetails">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="PatientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_luDocumentType_luStatus">
+    <End Role="luStatus" Type="Self.luStatu" Multiplicity="1" />
+    <End Role="luDocumentType" Type="Self.luDocumentType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="luStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="luDocumentType">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonalDetails_luGender">
+    <End Role="luGender" Type="Self.luGender" Multiplicity="0..1" />
+    <End Role="PersonalDetails" Type="Self.PersonalDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="luGender">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PersonalDetails">
+        <PropertyRef Name="GenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonalDetails_luMaritalStatus">
+    <End Role="luMaritalStatus" Type="Self.luMaritalStatu" Multiplicity="0..1" />
+    <End Role="PersonalDetails" Type="Self.PersonalDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="luMaritalStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PersonalDetails">
+        <PropertyRef Name="MaritalStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_luMedicalAid_luStatus">
+    <End Role="luStatus" Type="Self.luStatu" Multiplicity="1" />
+    <End Role="luMedicalAid" Type="Self.luMedicalAid" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="luStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="luMedicalAid">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonalDetails_luMedicalAid">
+    <End Role="luMedicalAid" Type="Self.luMedicalAid" Multiplicity="0..1" />
+    <End Role="PersonalDetails" Type="Self.PersonalDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="luMedicalAid">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PersonalDetails">
+        <PropertyRef Name="MedicalAidId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_luHomeEnvironment_luStatus">
+    <End Role="luStatus" Type="Self.luStatu" Multiplicity="1" />
+    <End Role="luHomeEnvironment" Type="Self.luHomeEnvironment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="luStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="luHomeEnvironment">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_luMobilityGrade_luStatus">
+    <End Role="luStatus" Type="Self.luStatu" Multiplicity="1" />
+    <End Role="luMobilityGrade" Type="Self.luMobilityGrade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="luStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="luMobilityGrade">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_luProsthesisDailyDuration_luStatus">
+    <End Role="luStatus" Type="Self.luStatu" Multiplicity="1" />
+    <End Role="luProsthesisDailyDuration" Type="Self.luProsthesisDailyDuration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="luStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="luProsthesisDailyDuration">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_luProsthesisFrequency_luStatus">
+    <End Role="luStatus" Type="Self.luStatu" Multiplicity="1" />
+    <End Role="luProsthesisFrequency" Type="Self.luProsthesisFrequency" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="luStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="luProsthesisFrequency">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_luQueue_luStatus">
+    <End Role="luStatus" Type="Self.luStatu" Multiplicity="1" />
+    <End Role="luQueue" Type="Self.luQueue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="luStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="luQueue">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_luTransport_luStatus">
+    <End Role="luStatus" Type="Self.luStatu" Multiplicity="1" />
+    <End Role="luTransport" Type="Self.luTransport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="luStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="luTransport">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_luWeight_luStatus">
+    <End Role="luStatus" Type="Self.luStatu" Multiplicity="1" />
+    <End Role="luWeight" Type="Self.luWeight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="luStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="luWeight">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_luWorkEnvironment_luStatus">
+    <End Role="luStatus" Type="Self.luStatu" Multiplicity="1" />
+    <End Role="luWorkEnvironment" Type="Self.luWorkEnvironment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="luStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="luWorkEnvironment">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NextOfKin_luStatus">
+    <End Role="luStatus" Type="Self.luStatu" Multiplicity="1" />
+    <End Role="NextOfKin" Type="Self.NextOfKin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="luStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NextOfKin">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Note_luStatus">
+    <End Role="luStatus" Type="Self.luStatu" Multiplicity="1" />
+    <End Role="Note" Type="Self.Note" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="luStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Note">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notification_luStatus">
+    <End Role="luStatus" Type="Self.luStatu" Multiplicity="1" />
+    <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="luStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Notification">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonalDetails_luStatus">
+    <End Role="luStatus" Type="Self.luStatu" Multiplicity="1" />
+    <End Role="PersonalDetails" Type="Self.PersonalDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="luStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PersonalDetails">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PracticeDetails_luStatus">
+    <End Role="luStatus" Type="Self.luStatu" Multiplicity="1" />
+    <End Role="PracticeDetails" Type="Self.PracticeDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="luStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PracticeDetails">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Role_luStatus">
+    <End Role="luStatus" Type="Self.luStatu" Multiplicity="1" />
+    <End Role="luRole" Type="Self.luRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="luStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="luRole">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Status">
+    <End Role="luStatus" Type="Self.luStatu" Multiplicity="0..1" />
+    <End Role="Document" Type="Self.Document" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="luStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Document">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_luStatus">
+    <End Role="luStatus" Type="Self.luStatu" Multiplicity="1" />
+    <End Role="User1" Type="Self.User1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="luStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User1">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Document_dbo_Patient_ID">
+    <End Role="PersonalDetails" Type="Self.PersonalDetail" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Document" Type="Self.Document" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonalDetails">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Document">
+        <PropertyRef Name="PatientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Document_dbo_User_ID">
+    <End Role="User1" Type="Self.User1" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Document" Type="Self.Document" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User1">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Document">
+        <PropertyRef Name="UploadedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientDetails">
+    <End Role="PersonalDetails" Type="Self.PersonalDetail" Multiplicity="1" />
+    <End Role="NextOfKin" Type="Self.NextOfKin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonalDetails">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NextOfKin">
+        <PropertyRef Name="PatientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notification_PatientID">
+    <End Role="PersonalDetails" Type="Self.PersonalDetail" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonalDetails">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Notification">
+        <PropertyRef Name="PatientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Practice_luPractice">
+    <End Role="PracticeDetails" Type="Self.PracticeDetail" Multiplicity="1" />
+    <End Role="User1" Type="Self.User1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PracticeDetails">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User1">
+        <PropertyRef Name="PracticeNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Procat3Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Appointments" EntityType="Self.Appointment" />
+    <EntitySet Name="luDocumentTypes" EntityType="Self.luDocumentType" />
+    <EntitySet Name="luGenders" EntityType="Self.luGender" />
+    <EntitySet Name="luMaritalStatus" EntityType="Self.luMaritalStatu" />
+    <EntitySet Name="luMedicalAids" EntityType="Self.luMedicalAid" />
+    <EntitySet Name="luStatus" EntityType="Self.luStatu" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Documents" EntityType="Self.Document" />
+    <EntitySet Name="NextOfKins" EntityType="Self.NextOfKin" />
+    <EntitySet Name="Notes" EntityType="Self.Note" />
+    <EntitySet Name="Notifications" EntityType="Self.Notification" />
+    <EntitySet Name="PersonalDetails" EntityType="Self.PersonalDetail" />
+    <EntitySet Name="PracticeDetails" EntityType="Self.PracticeDetail" />
+    <EntitySet Name="prac_practice" EntityType="Self.prac_practice" />
+    <EntitySet Name="prc_PracticeUser" EntityType="Self.prc_PracticeUser" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="luHomeEnvironments" EntityType="Self.luHomeEnvironment" />
+    <EntitySet Name="luMobilityGrades" EntityType="Self.luMobilityGrade" />
+    <EntitySet Name="luProsthesisDailyDurations" EntityType="Self.luProsthesisDailyDuration" />
+    <EntitySet Name="luProsthesisFrequencies" EntityType="Self.luProsthesisFrequency" />
+    <EntitySet Name="luQueues" EntityType="Self.luQueue" />
+    <EntitySet Name="luTransports" EntityType="Self.luTransport" />
+    <EntitySet Name="luWeights" EntityType="Self.luWeight" />
+    <EntitySet Name="luWorkEnvironments" EntityType="Self.luWorkEnvironment" />
+    <EntitySet Name="luRoles" EntityType="Self.luRole" />
+    <EntitySet Name="User1" EntityType="Self.User1" />
+    <EntitySet Name="luDocumentType1" EntityType="Self.luDocumentType1" />
+    <AssociationSet Name="FK_Appointment_luStatus" Association="Self.FK_Appointment_luStatus">
+      <End Role="luStatus" EntitySet="luStatus" />
+      <End Role="Appointment" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appointment_PatientID" Association="Self.FK_Appointment_PatientID">
+      <End Role="PersonalDetails" EntitySet="PersonalDetails" />
+      <End Role="Appointment" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_luDocumentType_luStatus" Association="Self.FK_luDocumentType_luStatus">
+      <End Role="luStatus" EntitySet="luStatus" />
+      <End Role="luDocumentType" EntitySet="luDocumentTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonalDetails_luGender" Association="Self.FK_PersonalDetails_luGender">
+      <End Role="luGender" EntitySet="luGenders" />
+      <End Role="PersonalDetails" EntitySet="PersonalDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonalDetails_luMaritalStatus" Association="Self.FK_PersonalDetails_luMaritalStatus">
+      <End Role="luMaritalStatus" EntitySet="luMaritalStatus" />
+      <End Role="PersonalDetails" EntitySet="PersonalDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_luMedicalAid_luStatus" Association="Self.FK_luMedicalAid_luStatus">
+      <End Role="luStatus" EntitySet="luStatus" />
+      <End Role="luMedicalAid" EntitySet="luMedicalAids" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonalDetails_luMedicalAid" Association="Self.FK_PersonalDetails_luMedicalAid">
+      <End Role="luMedicalAid" EntitySet="luMedicalAids" />
+      <End Role="PersonalDetails" EntitySet="PersonalDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_luHomeEnvironment_luStatus" Association="Self.FK_luHomeEnvironment_luStatus">
+      <End Role="luStatus" EntitySet="luStatus" />
+      <End Role="luHomeEnvironment" EntitySet="luHomeEnvironments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_luMobilityGrade_luStatus" Association="Self.FK_luMobilityGrade_luStatus">
+      <End Role="luStatus" EntitySet="luStatus" />
+      <End Role="luMobilityGrade" EntitySet="luMobilityGrades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_luProsthesisDailyDuration_luStatus" Association="Self.FK_luProsthesisDailyDuration_luStatus">
+      <End Role="luStatus" EntitySet="luStatus" />
+      <End Role="luProsthesisDailyDuration" EntitySet="luProsthesisDailyDurations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_luProsthesisFrequency_luStatus" Association="Self.FK_luProsthesisFrequency_luStatus">
+      <End Role="luStatus" EntitySet="luStatus" />
+      <End Role="luProsthesisFrequency" EntitySet="luProsthesisFrequencies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_luQueue_luStatus" Association="Self.FK_luQueue_luStatus">
+      <End Role="luStatus" EntitySet="luStatus" />
+      <End Role="luQueue" EntitySet="luQueues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_luTransport_luStatus" Association="Self.FK_luTransport_luStatus">
+      <End Role="luStatus" EntitySet="luStatus" />
+      <End Role="luTransport" EntitySet="luTransports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_luWeight_luStatus" Association="Self.FK_luWeight_luStatus">
+      <End Role="luStatus" EntitySet="luStatus" />
+      <End Role="luWeight" EntitySet="luWeights" />
+    </AssociationSet>
+    <AssociationSet Name="FK_luWorkEnvironment_luStatus" Association="Self.FK_luWorkEnvironment_luStatus">
+      <End Role="luStatus" EntitySet="luStatus" />
+      <End Role="luWorkEnvironment" EntitySet="luWorkEnvironments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NextOfKin_luStatus" Association="Self.FK_NextOfKin_luStatus">
+      <End Role="luStatus" EntitySet="luStatus" />
+      <End Role="NextOfKin" EntitySet="NextOfKins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Note_luStatus" Association="Self.FK_Note_luStatus">
+      <End Role="luStatus" EntitySet="luStatus" />
+      <End Role="Note" EntitySet="Notes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notification_luStatus" Association="Self.FK_Notification_luStatus">
+      <End Role="luStatus" EntitySet="luStatus" />
+      <End Role="Notification" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonalDetails_luStatus" Association="Self.FK_PersonalDetails_luStatus">
+      <End Role="luStatus" EntitySet="luStatus" />
+      <End Role="PersonalDetails" EntitySet="PersonalDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PracticeDetails_luStatus" Association="Self.FK_PracticeDetails_luStatus">
+      <End Role="luStatus" EntitySet="luStatus" />
+      <End Role="PracticeDetails" EntitySet="PracticeDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Role_luStatus" Association="Self.FK_Role_luStatus">
+      <End Role="luStatus" EntitySet="luStatus" />
+      <End Role="luRole" EntitySet="luRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Status" Association="Self.FK_Status">
+      <End Role="luStatus" EntitySet="luStatus" />
+      <End Role="Document" EntitySet="Documents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_luStatus" Association="Self.FK_User_luStatus">
+      <End Role="luStatus" EntitySet="luStatus" />
+      <End Role="User1" EntitySet="User1" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Document_dbo_Patient_ID" Association="Self.FK_dbo_Document_dbo_Patient_ID">
+      <End Role="PersonalDetails" EntitySet="PersonalDetails" />
+      <End Role="Document" EntitySet="Documents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Document_dbo_User_ID" Association="Self.FK_dbo_Document_dbo_User_ID">
+      <End Role="User1" EntitySet="User1" />
+      <End Role="Document" EntitySet="Documents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientDetails" Association="Self.FK_PatientDetails">
+      <End Role="PersonalDetails" EntitySet="PersonalDetails" />
+      <End Role="NextOfKin" EntitySet="NextOfKins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notification_PatientID" Association="Self.FK_Notification_PatientID">
+      <End Role="PersonalDetails" EntitySet="PersonalDetails" />
+      <End Role="Notification" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Practice_luPractice" Association="Self.FK_Practice_luPractice">
+      <End Role="PracticeDetails" EntitySet="PracticeDetails" />
+      <End Role="User1" EntitySet="User1" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

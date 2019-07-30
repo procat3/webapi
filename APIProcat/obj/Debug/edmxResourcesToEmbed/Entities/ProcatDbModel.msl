@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Procat3ModelStoreContainer" CdmEntityContainer="Procat3Entities">
+    <EntitySetMapping Name="Appointments">
+      <EntityTypeMapping TypeName="Procat3Model.Appointment">
+        <MappingFragment StoreEntitySet="Appointment">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+          <ScalarProperty Name="AppointmentDate" ColumnName="AppointmentDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="luDocumentTypes">
+      <EntityTypeMapping TypeName="Procat3Model.luDocumentType">
+        <MappingFragment StoreEntitySet="luDocumentType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="luGenders">
+      <EntityTypeMapping TypeName="Procat3Model.luGender">
+        <MappingFragment StoreEntitySet="luGender">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="luMaritalStatus">
+      <EntityTypeMapping TypeName="Procat3Model.luMaritalStatu">
+        <MappingFragment StoreEntitySet="luMaritalStatus">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="luMedicalAids">
+      <EntityTypeMapping TypeName="Procat3Model.luMedicalAid">
+        <MappingFragment StoreEntitySet="luMedicalAid">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MedicalAidName" ColumnName="MedicalAidName" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="TelephoneNumber" ColumnName="TelephoneNumber" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="luStatus">
+      <EntityTypeMapping TypeName="Procat3Model.luStatu">
+        <MappingFragment StoreEntitySet="luStatus">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Procat3Model.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Documents">
+      <EntityTypeMapping TypeName="Procat3Model.Document">
+        <MappingFragment StoreEntitySet="Document">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+          <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
+          <ScalarProperty Name="ImageDate" ColumnName="ImageDate" />
+          <ScalarProperty Name="DateUploaded" ColumnName="DateUploaded" />
+          <ScalarProperty Name="UploadedBy" ColumnName="UploadedBy" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NextOfKins">
+      <EntityTypeMapping TypeName="Procat3Model.NextOfKin">
+        <MappingFragment StoreEntitySet="NextOfKin">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Relationship" ColumnName="Relationship" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="WorkTelNumber" ColumnName="WorkTelNumber" />
+          <ScalarProperty Name="HomeTelNumber" ColumnName="HomeTelNumber" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notes">
+      <EntityTypeMapping TypeName="Procat3Model.Note">
+        <MappingFragment StoreEntitySet="Note">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notifications">
+      <EntityTypeMapping TypeName="Procat3Model.Notification">
+        <MappingFragment StoreEntitySet="Notification">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonalDetails">
+      <EntityTypeMapping TypeName="Procat3Model.PersonalDetail">
+        <MappingFragment StoreEntitySet="PersonalDetails">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="IdNumber" ColumnName="IdNumber" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="WorkTelNumber" ColumnName="WorkTelNumber" />
+          <ScalarProperty Name="HomeTelNumber" ColumnName="HomeTelNumber" />
+          <ScalarProperty Name="Employer" ColumnName="Employer" />
+          <ScalarProperty Name="EmployerContactPerson" ColumnName="EmployerContactPerson" />
+          <ScalarProperty Name="EmployerTelNumber" ColumnName="EmployerTelNumber" />
+          <ScalarProperty Name="EmployerEmailAddress" ColumnName="EmployerEmailAddress" />
+          <ScalarProperty Name="NumberofDependants" ColumnName="NumberofDependants" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="MedicalAidId" ColumnName="MedicalAidId" />
+          <ScalarProperty Name="PatientTypeId" ColumnName="PatientTypeId" />
+          <ScalarProperty Name="MaritalStatusId" ColumnName="MaritalStatusId" />
+          <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PracticeDetails">
+      <EntityTypeMapping TypeName="Procat3Model.PracticeDetail">
+        <MappingFragment StoreEntitySet="PracticeDetails">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PracticeName" ColumnName="PracticeName" />
+          <ScalarProperty Name="PracticeNumber" ColumnName="PracticeNumber" />
+          <ScalarProperty Name="PracticeDescription" ColumnName="PracticeDescription" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+          <ScalarProperty Name="TelephoneNumber" ColumnName="TelephoneNumber" />
+          <ScalarProperty Name="VATRegistrationNumber" ColumnName="VATRegistrationNumber" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="prac_practice">
+      <EntityTypeMapping TypeName="Procat3Model.prac_practice">
+        <MappingFragment StoreEntitySet="prac_practice">
+          <ScalarProperty Name="PracticeNumber" ColumnName="PracticeNumber" />
+          <ScalarProperty Name="PracDescription" ColumnName="PracDescription" />
+          <ScalarProperty Name="PracAddress" ColumnName="PracAddress" />
+          <ScalarProperty Name="PracOfficeNum" ColumnName="PracOfficeNum" />
+          <ScalarProperty Name="PracEmailAddress" ColumnName="PracEmailAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="prc_PracticeUser">
+      <EntityTypeMapping TypeName="Procat3Model.prc_PracticeUser">
+        <MappingFragment StoreEntitySet="prc_PracticeUser">
+          <ScalarProperty Name="PracticeNumber" ColumnName="PracticeNumber" />
+          <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+          <ScalarProperty Name="PracStatus" ColumnName="PracStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Procat3Model.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="IsValidEmail" ColumnName="IsValidEmail" />
+          <ScalarProperty Name="PracticeNumber" ColumnName="PracticeNumber" />
+          <ScalarProperty Name="CellphonNumber" ColumnName="CellphonNumber" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="luHomeEnvironments">
+      <EntityTypeMapping TypeName="Procat3Model.luHomeEnvironment">
+        <MappingFragment StoreEntitySet="luHomeEnvironment">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="HomeEnvironment" ColumnName="HomeEnvironment" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="luMobilityGrades">
+      <EntityTypeMapping TypeName="Procat3Model.luMobilityGrade">
+        <MappingFragment StoreEntitySet="luMobilityGrade">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MobilityGrade" ColumnName="MobilityGrade" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="luProsthesisDailyDurations">
+      <EntityTypeMapping TypeName="Procat3Model.luProsthesisDailyDuration">
+        <MappingFragment StoreEntitySet="luProsthesisDailyDuration">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="luProsthesisFrequencies">
+      <EntityTypeMapping TypeName="Procat3Model.luProsthesisFrequency">
+        <MappingFragment StoreEntitySet="luProsthesisFrequency">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="luQueues">
+      <EntityTypeMapping TypeName="Procat3Model.luQueue">
+        <MappingFragment StoreEntitySet="luQueue">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="QueueDescription" ColumnName="QueueDescription" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="luTransports">
+      <EntityTypeMapping TypeName="Procat3Model.luTransport">
+        <MappingFragment StoreEntitySet="luTransport">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Transport" ColumnName="Transport" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="luWeights">
+      <EntityTypeMapping TypeName="Procat3Model.luWeight">
+        <MappingFragment StoreEntitySet="luWeight">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="WeightCategory" ColumnName="WeightCategory" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="luWorkEnvironments">
+      <EntityTypeMapping TypeName="Procat3Model.luWorkEnvironment">
+        <MappingFragment StoreEntitySet="luWorkEnvironment">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="luRoles">
+      <EntityTypeMapping TypeName="Procat3Model.luRole">
+        <MappingFragment StoreEntitySet="luRole">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User1">
+      <EntityTypeMapping TypeName="Procat3Model.User1">
+        <MappingFragment StoreEntitySet="User1">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="PracticeNumber" ColumnName="PracticeNumber" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="luDocumentType1">
+      <EntityTypeMapping TypeName="Procat3Model.luDocumentType1">
+        <MappingFragment StoreEntitySet="luDocumentType1">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DocumentDescription" ColumnName="DocumentDescription" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="61675bfe6d844264b89a747022ed9555" Name="Diagram1">
+        <EntityTypeShape EntityType="Procat3Model.Appointment" Width="1.5" PointX="6" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.luDocumentType" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.luGender" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.luMaritalStatu" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.luMedicalAid" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.luStatu" Width="1.5" PointX="0.75" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.Document" Width="1.5" PointX="10.5" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.NextOfKin" Width="1.5" PointX="7.5" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.Note" Width="1.5" PointX="3" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.Notification" Width="1.5" PointX="10.5" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.PersonalDetail" Width="1.5" PointX="5.25" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.PracticeDetail" Width="1.5" PointX="3" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.prac_practice" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.prc_PracticeUser" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.User" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.luHomeEnvironment" Width="1.5" PointX="3" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.luMobilityGrade" Width="1.5" PointX="3" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.luProsthesisDailyDuration" Width="1.5" PointX="3" PointY="29.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.luProsthesisFrequency" Width="1.5" PointX="3" PointY="32.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.luQueue" Width="1.5" PointX="3" PointY="35" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.luTransport" Width="1.5" PointX="3" PointY="37.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.luWeight" Width="1.5" PointX="3" PointY="40" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.luWorkEnvironment" Width="1.5" PointX="3" PointY="42.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.luRole" Width="1.5" PointX="3" PointY="45.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.User1" Width="1.5" PointX="8.25" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Procat3Model.luDocumentType1" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Procat3Model.FK_Appointment_luStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_Appointment_PatientID" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_luDocumentType_luStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_PersonalDetails_luGender" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_PersonalDetails_luMaritalStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_luMedicalAid_luStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_PersonalDetails_luMedicalAid" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_luHomeEnvironment_luStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_luMobilityGrade_luStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_luProsthesisDailyDuration_luStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_luProsthesisFrequency_luStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_luQueue_luStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_luTransport_luStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_luWeight_luStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_luWorkEnvironment_luStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_NextOfKin_luStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_Note_luStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_Notification_luStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_PersonalDetails_luStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_PracticeDetails_luStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_Role_luStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_User_luStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_dbo_Document_dbo_Patient_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_dbo_Document_dbo_User_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_PatientDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_Notification_PatientID" ManuallyRouted="false" />
+        <AssociationConnector Association="Procat3Model.FK_Practice_luPractice" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
